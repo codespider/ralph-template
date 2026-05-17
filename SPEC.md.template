@@ -1,0 +1,66 @@
+# SPEC — {{PROJECT_NAME}}
+
+> Immutable goal description. Ralph re-reads this on every iteration.
+> **Do not let the agent edit this file.** If the spec is wrong, you fix it
+> by hand and restart the loop.
+
+## Goal
+
+<!-- One paragraph: what are we building, for whom, and why. -->
+
+## Non-goals
+
+<!-- What this project explicitly does NOT cover. Helps the agent resist
+     scope creep. -->
+
+-
+-
+
+## Constraints
+
+<!-- Hard rules the agent must respect: stack choices, performance budgets,
+     security requirements, deployment targets, etc. -->
+
+- Language / runtime:
+- Framework:
+- Datastore:
+- External services:
+- Performance / latency budget:
+- Deployment target:
+
+## Inputs
+
+<!-- What flows into the system: data shapes, message formats, API contracts. -->
+
+## Outputs
+
+<!-- What the system produces: data shapes, side effects, observable behavior. -->
+
+## Acceptance criteria (the "done" checklist)
+
+<!-- Concrete, testable conditions. The agent should be able to verify each
+     one mechanically. -->
+
+- [ ] `<build command>` exits zero from a clean clone.
+- [ ] `<local-run command>` boots all dependencies.
+- [ ] Unit tests pass.
+- [ ] Integration tests pass.
+- [ ] End-to-end smoke test below works.
+- [ ] `README.md` documents how to run the project and the tests.
+
+## End-to-end smoke test
+
+<!-- Step-by-step manual verification that exercises the whole system.
+     This is the agent's north star — when it passes, you're done. -->
+
+1.
+2.
+3.
+
+## Out of scope / future work
+
+<!-- Things explicitly punted. Capture them here so the agent doesn't try
+     to grab them and the human knows what to circle back on. -->
+
+-
+-

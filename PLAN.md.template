@@ -1,0 +1,44 @@
+# PLAN — {{PROJECT_NAME}}
+
+> Mutable checklist. Ralph ticks items off as it finishes them and may add
+> sub-items when it discovers new work.
+>
+> Order matters: foundational items first, dependent items below. The agent
+> always picks the **first unchecked item** it sees.
+
+## Phase 0 — Bootstrap
+
+- [ ] Repo skeleton (project structure, build file, .gitignore)
+- [ ] CI-equivalent local check: `<build command>` runs and passes on empty project
+- [ ] CLAUDE.md at repo root documents stack and conventions
+- [ ] README.md skeleton with placeholder sections
+
+## Phase 1 — <first vertical slice>
+
+- [ ]
+- [ ]
+
+## Phase 2 — <second vertical slice>
+
+- [ ]
+- [ ]
+
+## Phase N — Hardening
+
+- [ ] Structured logging wired up
+- [ ] Health/readiness endpoints (if applicable)
+- [ ] Error handling reviewed for swallowed exceptions
+- [ ] Integration tests cover the full happy path
+- [ ] Smoke test from SPEC.md verified end-to-end
+- [ ] README documents local setup, tests, and smoke test
+
+<!--
+Tips for writing a good PLAN:
+- Each item should be small enough to finish in one Ralph iteration (~5-15 min
+  of agent work). If it's bigger, break it down.
+- Prefer vertical slices (a thin end-to-end feature) over horizontal layers
+  (all the models, then all the controllers, then all the tests).
+- Put the riskiest / most uncertain work early. Cheap wins first feels good
+  but hides the hard problems.
+- Don't pre-plan everything. The agent will add sub-items as it discovers them.
+-->

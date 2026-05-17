@@ -1,0 +1,99 @@
+# PROJECT — {{PROJECT_NAME}}
+
+> Project-specific overlay for the Ralph kernel. **Edit these sections per
+> project.** The generic procedure lives in `KERNEL.md` and should not be
+> touched. The runner concatenates `KERNEL.md + PROJECT.md` into `PROMPT.md`
+> before each iteration.
+
+## Stack conventions (referenced by procedure step 3)
+
+- **Language / runtime:** {{LANGUAGE}}
+- **Framework conventions:** {{STACK_CONVENTIONS}}
+  <!-- e.g. "Spring Boot, constructor injection, immutable DTOs"
+       e.g. "FastAPI, Pydantic models, dependency-injected services"
+       e.g. "Next.js app router, server components by default" -->
+- **Logging:** {{LOGGING_RULE}}
+  <!-- e.g. "SLF4J structured logging, no System.out"
+       e.g. "stdlib logging with structlog, no print()" -->
+- **Config / secrets:** {{CONFIG_RULE}}
+  <!-- e.g. "application.yml + env vars, no hardcoded secrets"
+       e.g. "pydantic-settings, env-only, no .env committed" -->
+
+## Test stacks (referenced by procedure step 4)
+
+- **Unit tests:** {{UNIT_TEST_STACK}}
+  <!-- e.g. "JUnit 5 + Mockito + AssertJ"
+       e.g. "pytest + unittest.mock + hypothesis" -->
+- **Integration tests:** {{INTEGRATION_TEST_STACK}}
+  <!-- e.g. "Testcontainers (Postgres) + LocalStack (SQS)"
+       e.g. "docker compose fixtures + pytest-postgresql" -->
+
+## Build/test command (referenced by procedure step 5)
+
+The single command that must exit zero before any PLAN.md item can be marked done:
+
+```
+{{BUILD_AND_TEST_COMMAND}}
+```
+
+<!-- e.g. ./gradlew build
+     e.g. uv run pytest && uv run ruff check && uv run mypy .
+     e.g. pnpm install && pnpm test && pnpm typecheck && pnpm lint -->
+
+## Local-run command
+
+The command that boots all local dependencies for end-to-end testing:
+
+```
+{{LOCAL_RUN_COMMAND}}
+```
+
+<!-- e.g. docker compose up -d
+     e.g. make dev
+     e.g. (none — no external deps) -->
+
+## Project-specific rules
+
+<!-- Bullets unique to this project. Add or remove freely. Examples:
+     - "Postgres runs in docker-compose; don't introduce H2 or in-memory shims."
+     - "Use Testcontainers + LocalStack for integration tests; do not mock the
+        AWS SDK at the integration boundary."
+     - "All HTTP endpoints must validate request bodies with Pydantic."
+     - "Schema changes go in Alembic migrations, never inline SQL."
+-->
+
+- {{PROJECT_SPECIFIC_RULE_1}}
+- {{PROJECT_SPECIFIC_RULE_2}}
+
+## What "done" looks like (the global exit condition)
+
+All of the following must be true before you create `ralph/STOP` for completion:
+
+- `{{BUILD_AND_TEST_COMMAND}}` is green from a clean clone.
+- `{{LOCAL_RUN_COMMAND}}` boots all local dependencies (skip if not applicable).
+- The integration test suite passes.
+- The end-to-end smoke test described in `ralph/SPEC.md` works.
+- `README.md` at repo root documents how to run the project and the tests.
+
+When all that holds, write `ralph/STOP` and we're done.
+
+Begin.
+
+<!--
+========================================================================
+Placeholders to fill in before first run:
+
+  {{PROJECT_NAME}}            — e.g. "Inventory Sync Service"
+  {{LANGUAGE}}                — e.g. "Java 21", "Python 3.12", "TypeScript 5.x"
+  {{STACK_CONVENTIONS}}       — framework conventions, DI style, etc.
+  {{LOGGING_RULE}}            — your logging contract
+  {{CONFIG_RULE}}             — how config and secrets are handled
+  {{UNIT_TEST_STACK}}         — unit-test libraries
+  {{INTEGRATION_TEST_STACK}}  — integration-test libraries / runtime
+  {{BUILD_AND_TEST_COMMAND}}  — the one command that proves the build is green
+  {{LOCAL_RUN_COMMAND}}       — how to bring up local dependencies
+  {{PROJECT_SPECIFIC_RULE_*}} — bullets unique to this project
+
+See PROMPT.md.example for a filled-in version (Java/Spring Boot/Gradle/Postgres).
+========================================================================
+-->
