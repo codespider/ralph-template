@@ -19,6 +19,13 @@ init: (_check "claude") (_check "jq") (_check "python3")
     @echo "✅ Ralph setup complete in ./ralph/"
     @echo "👉 Next: Fill in ralph/PROJECT.md and ralph/SPEC.md"
 
+# Lint the project scripts
+lint: (_check "shellcheck") (_check "ruff")
+    @echo "🔍 Linting shell scripts..."
+    shellcheck *.sh
+    @echo "🔍 Linting Python files..."
+    ruff check .
+
 # Run a dry-run to verify the prompt concatenation
 dry-run:
     @RALPH_DRY_RUN=1 ./ralph.sh --max 1
